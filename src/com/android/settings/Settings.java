@@ -521,4 +521,5 @@ public class Settings extends SettingsActivity {
 
     // Private DNS Settings
     public static class PrivateDnsSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class DevRunningServicesActivity extends SettingsActivity { /* empty */ }
 }
