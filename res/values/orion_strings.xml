@@ -19,4 +19,7 @@
      <!-- About device screen, OrionOS -->
     <string name="orionos_version">OrionOS version</string>
     
+    <!-- About device screen, Build date -->
+    <string name="build_date">Build date</string>
+
 </resources>
