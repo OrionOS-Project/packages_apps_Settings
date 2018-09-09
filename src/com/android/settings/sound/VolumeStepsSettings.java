@@ -30,7 +30,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
-import org.evolution.settings.preferences.CustomSeekBarPreference;
+import com.orion.support.preferences.CustomSeekBarPreference;
 
 /**
  * volume steps settings under sound
@@ -75,7 +75,7 @@ public class VolumeStepsSettings extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.EVOLVER;
+        return MetricsEvent.ORION;
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
