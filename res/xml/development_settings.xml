@@ -586,7 +586,6 @@
             android:key="density"
             android:title="@string/developer_smallest_width" />
 
-
         <SwitchPreferenceCompat
             android:key="transparent_navigation_bar"
             android:title="@string/transparent_navigation_bar"
