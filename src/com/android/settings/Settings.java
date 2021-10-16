@@ -538,4 +538,9 @@ public class Settings extends SettingsActivity {
     public static class ContentProtectionSettingsActivity extends SettingsActivity { /* empty */ }
     public static class MagnificationActivity extends SettingsActivity { /* empty */ }
     public static class FlashNotificationsActivity extends SettingsActivity { /* empty */ }
+
+    /**
+     * Molecular Activity
+     */
+    public static class MolecularSettingsActivity extends SettingsActivity {}
 }
