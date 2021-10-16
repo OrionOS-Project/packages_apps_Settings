@@ -20,7 +20,39 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="top_level_settings">
 
-    <PreferenceCategory
+    <Preference
+        android:fragment="com.orion.support.Molecular"
+        android:icon="@drawable/ic_homepage_orion"
+        android:key="top_level_molecular"
+        android:order="9"
+        android:title="@string/molecular_title"
+        android:summary="@string/molecular_summary"
+        settings:controller="com.android.settings.TopLevelMolecularPreferenceController"/>
+
+    <com.android.settings.widget.HomepagePreference
+        android:fragment="com.android.settings.network.NetworkDashboardFragment"
+        android:icon="@drawable/ic_settings_wireless"
+        android:key="top_level_network"
+        android:order="-150"
+        android:title="@string/network_dashboard_title"
+        android:summary="@string/summary_placeholder"
+        settings:highlightableMenuKey="@string/menu_key_network"
+        settings:controller="com.android.settings.network.TopLevelNetworkEntryPreferenceController"/>
+
+    <com.android.settings.widget.HomepagePreference
+        android:fragment="com.android.settings.communal.CommunalDashboardFragment"
+        android:icon="@drawable/ia_settings_communal"
+        android:key="top_level_communal"
+        android:order="-145"
+        android:title="@string/communal_settings_title"
+        android:summary="@string/communal_settings_summary"
+        settings:highlightableMenuKey="@string/menu_key_communal"
+        settings:controller="com.android.settings.communal.CommunalPreferenceController"/>
+
+    <com.android.settings.widget.HomepagePreference
+        android:fragment="com.android.settings.connecteddevice.ConnectedDeviceDashboardFragment"
+        android:icon="@drawable/ic_devices_other"
+        android:key="top_level_connected_devices"
         android:order="-140"
         android:key="top_level_account_category"
         android:layout="@layout/settingslib_untitled_preference_category">

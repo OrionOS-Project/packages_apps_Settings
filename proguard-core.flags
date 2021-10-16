@@ -1,0 +1,2 @@
+# DerpFestCustomizations
+-keep class com.orion.support.**

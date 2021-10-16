@@ -629,6 +629,7 @@ public class Settings extends SettingsActivity {
     public static class ContentProtectionSettingsActivity extends SettingsActivity { /* empty */ }
     public static class MagnificationActivity extends SettingsActivity { /* empty */ }
     public static class FlashNotificationsActivity extends SettingsActivity { /* empty */ }
+<<<<<<< HEAD
     public static class NotificationBundlesActivity extends SettingsActivity { /* empty */ }
     public static class NotificationSummarizationActivity extends SettingsActivity { /* empty */ }
 
@@ -654,3 +655,11 @@ public class Settings extends SettingsActivity {
     }
     public static class SafetyCenterActivity extends SettingsActivity { }
 }
+=======
+
+    /**
+     * Molecular Activity
+     */
+    public static class MolecularSettingsActivity extends SettingsActivity {}
+}
+>>>>>>> e575d445d53 (Settings: Integrate Molecular Customizations)
