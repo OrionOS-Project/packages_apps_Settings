@@ -32,7 +32,6 @@ import android.os.Bundle;
 import android.os.UserManager;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
@@ -50,10 +49,11 @@ import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.search.SearchIndexable;
 import com.android.settingslib.wifi.WifiEnterpriseRestrictionUtils;
 
+import com.android.settings.wifi.tether.WifiTetherClientManagerPreferenceController;
+
 import java.util.ArrayList;
 import java.util.List;
 
-// LINT.IfChange
 @SearchIndexable
 public class WifiTetherSettings extends RestrictedDashboardFragment
         implements WifiTetherBasePreferenceController.OnTetherConfigUpdateListener {
@@ -79,6 +79,9 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
     static final String KEY_WIFI_HOTSPOT_SPEED = "wifi_hotspot_speed";
     @VisibleForTesting
     static final String KEY_INSTANT_HOTSPOT = "wifi_hotspot_instant";
+    @VisibleForTesting
+    static final String KEY_WIFI_TETHER_CLIENT_MANAGER =
+            WifiTetherClientManagerPreferenceController.PREF_KEY;
 
     @VisibleForTesting
     SettingsMainSwitchBar mMainSwitchBar;
@@ -93,6 +96,7 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
     WifiTetherMaximizeCompatibilityPreferenceController mMaxCompatibilityPrefController;
     @VisibleForTesting
     WifiTetherAutoOffPreferenceController mWifiTetherAutoOffPreferenceController;
+    private WifiTetherClientManagerPreferenceController mClientPrefController;
 
     @VisibleForTesting
     boolean mUnavailable;
@@ -196,15 +200,13 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
         super.onAttach(context);
         mTetherChangeReceiver = new TetherChangeReceiver();
 
-        if (!isCatalystEnabled()) {
-            mSSIDPreferenceController = use(WifiTetherSSIDPreferenceController.class);
-            mWifiTetherAutoOffPreferenceController =
-                    use(WifiTetherAutoOffPreferenceController.class);
-        }
+        mSSIDPreferenceController = use(WifiTetherSSIDPreferenceController.class);
         mSecurityPreferenceController = use(WifiTetherSecurityPreferenceController.class);
         mPasswordPreferenceController = use(WifiTetherPasswordPreferenceController.class);
         mMaxCompatibilityPrefController =
                 use(WifiTetherMaximizeCompatibilityPreferenceController.class);
+        mWifiTetherAutoOffPreferenceController = use(WifiTetherAutoOffPreferenceController.class);
+        mClientPrefController = use(WifiTetherClientManagerPreferenceController.class);
     }
 
     @Override
@@ -213,17 +215,14 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
         if (mUnavailable) {
             return;
         }
-
-        if (!isCatalystEnabled()) {
-            // Assume we are in a SettingsActivity. This is only safe because we currently use
-            // SettingsActivity as base for all preference fragments.
-            final SettingsActivity activity = (SettingsActivity) getActivity();
-            mMainSwitchBar = activity.getSwitchBar();
-            mMainSwitchBar.setTitle(getString(R.string.use_wifi_hotsopt_main_switch_title));
-            mSwitchBarController = new WifiTetherSwitchBarController(activity, mMainSwitchBar);
-            getSettingsLifecycle().addObserver(mSwitchBarController);
-            mMainSwitchBar.show();
-        }
+        // Assume we are in a SettingsActivity. This is only safe because we currently use
+        // SettingsActivity as base for all preference fragments.
+        final SettingsActivity activity = (SettingsActivity) getActivity();
+        mMainSwitchBar = activity.getSwitchBar();
+        mMainSwitchBar.setTitle(getString(R.string.use_wifi_hotsopt_main_switch_title));
+        mSwitchBarController = new WifiTetherSwitchBarController(activity, mMainSwitchBar);
+        getSettingsLifecycle().addObserver(mSwitchBarController);
+        mMainSwitchBar.show();
     }
 
     @Override
@@ -292,6 +291,7 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
         controllers.add(
                 new WifiTetherAutoOffPreferenceController(context, KEY_WIFI_TETHER_AUTO_OFF));
         controllers.add(new WifiTetherMaximizeCompatibilityPreferenceController(context, listener));
+        controllers.add(new WifiTetherClientManagerPreferenceController(context, listener));
         return controllers;
     }
 
@@ -305,9 +305,7 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
 
     @VisibleForTesting
     void onRestartingChanged(Boolean restarting) {
-        if (!isCatalystEnabled()) {
-            mMainSwitchBar.setVisibility((restarting) ? INVISIBLE : VISIBLE);
-        }
+        mMainSwitchBar.setVisibility((restarting) ? INVISIBLE : VISIBLE);
         setLoading(restarting, false);
     }
 
@@ -325,11 +323,7 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
     SoftApConfiguration buildNewConfig() {
         SoftApConfiguration currentConfig = mWifiTetherViewModel.getSoftApConfiguration();
         SoftApConfiguration.Builder configBuilder = new SoftApConfiguration.Builder(currentConfig);
-        if (!isCatalystEnabled()) {
-            configBuilder.setSsid(mSSIDPreferenceController.getSSID());
-            configBuilder.setAutoShutdownEnabled(
-                    mWifiTetherAutoOffPreferenceController.isEnabled());
-        }
+        configBuilder.setSsid(mSSIDPreferenceController.getSSID());
         int securityType =
                 mWifiTetherViewModel.isSpeedFeatureAvailable()
                         ? currentConfig.getSecurityType()
@@ -342,21 +336,17 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
         if (!mWifiTetherViewModel.isSpeedFeatureAvailable()) {
             mMaxCompatibilityPrefController.setupMaximizeCompatibility(configBuilder);
         }
+        configBuilder.setAutoShutdownEnabled(
+                mWifiTetherAutoOffPreferenceController.isEnabled());
+        mClientPrefController.updateConfig(configBuilder);
         return configBuilder.build();
     }
 
     private void updateDisplayWithNewConfig() {
-        if (!isCatalystEnabled()) {
-            use(WifiTetherSSIDPreferenceController.class).updateDisplay();
-        }
+        use(WifiTetherSSIDPreferenceController.class).updateDisplay();
         use(WifiTetherSecurityPreferenceController.class).updateDisplay();
         use(WifiTetherPasswordPreferenceController.class).updateDisplay();
         use(WifiTetherMaximizeCompatibilityPreferenceController.class).updateDisplay();
-    }
-
-    @Override
-    public @Nullable String getPreferenceScreenBindingKey(@NonNull Context context) {
-        return WifiHotspotScreen.KEY;
     }
 
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
@@ -394,6 +384,7 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
                 keys.add(KEY_WIFI_TETHER_NETWORK_PASSWORD);
                 keys.add(KEY_WIFI_TETHER_AUTO_OFF);
                 keys.add(KEY_WIFI_TETHER_MAXIMIZE_COMPATIBILITY);
+                keys.add(KEY_WIFI_TETHER_CLIENT_MANAGER);
                 keys.add(KEY_WIFI_HOTSPOT_SPEED);
                 keys.add(KEY_INSTANT_HOTSPOT);
             } else {
@@ -458,4 +449,3 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
         }
     }
 }
-// LINT.ThenChange(WifiHotspotScreen.kt)
