@@ -168,6 +168,13 @@
         android:ringtoneType="alarm"
         android:order="-60"/>
 
+    <com.orion.support.preferences.SystemSettingSwitchPreference
+        android:key="show_app_volume"
+        android:title="@string/app_volume_title"
+        android:summary="@string/app_volume_summary"
+        android:defaultValue="false"
+        android:order="-5"/>
+
     <!-- Dial pad tones -->
     <SwitchPreferenceCompat
         android:key="dial_pad_tones"
@@ -205,7 +212,7 @@
         android:order="-30"/>
 
     <!-- Screenshot sound -->
-    <org.evolution.settings.preferences.SystemSettingSwitchPreference
+    <com.orion.support.preferences.SystemSettingSwitchPreference
         android:key="screenshot_shutter_sound"
         android:title="@string/screenshot_shutter_sound_title"
         android:defaultValue="true"
