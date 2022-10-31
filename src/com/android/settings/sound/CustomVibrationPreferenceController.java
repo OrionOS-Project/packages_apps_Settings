@@ -34,7 +34,7 @@ import com.android.settings.sound.CustomVibrationPreferenceController;
 import com.android.settings.Utils;
 import com.android.settingslib.core.AbstractPreferenceController;
 
-import org.derpfest.support.preferences.ProperSeekBarPreference;
+import com.orion.support.preferences.ProperSeekBarPreference;
 
 /**
  * This class allows choosing a vibration pattern while ringing
