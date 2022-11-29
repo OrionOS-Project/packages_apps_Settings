@@ -37,4 +37,7 @@
 
     <!-- Misc Haptics -->
     <string name="misc_vibration_category_title">Additional vibration options</string>
+
+    <!-- QS Tiles haptic -->
+    <string name="qs_tiles_haptic_feedback_title">Vibrate on touching QS tiles</string>
 </resources>
