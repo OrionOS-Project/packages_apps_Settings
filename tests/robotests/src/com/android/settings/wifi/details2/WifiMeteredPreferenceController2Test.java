@@ -28,8 +28,7 @@ import android.platform.test.annotations.DisableFlags;
 import android.platform.test.annotations.EnableFlags;
 import android.platform.test.flag.junit.SetFlagsRule;
 
-import androidx.preference.DropDownPreference;
-import androidx.preference.PreferenceScreen;
+import androidx.preference.ListPreference;
 
 import com.android.settings.R;
 import com.android.settings.connectivity.Flags;

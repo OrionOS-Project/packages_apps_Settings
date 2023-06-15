@@ -53,8 +53,15 @@
 
     <PreferenceCategory
         android:key="display_category"
-        android:title="@string/dark_theme_timing_category">
-        <DropDownPreference
+        android:title="@string/accessibility_screen_option">
+
+        <SwitchPreferenceCompat
+            android:key="toggle_force_invert"
+            android:summary="@string/accessibility_force_invert_summary"
+            android:title="@string/accessibility_force_invert_title"
+            settings:controller="com.android.settings.accessibility.ToggleForceInvertPreferenceController"/>
+
+        <ListPreference
             android:key="dark_ui_auto_mode"
             android:title="@string/dark_ui_auto_mode_title"
             android:summary="%s"
