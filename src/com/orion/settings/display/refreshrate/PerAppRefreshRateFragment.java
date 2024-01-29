@@ -16,9 +16,9 @@ import java.util.List;
 
 import com.orion.display.RefreshRateManager;
 
-import com.orion.settings.fragment.PerAppConfigFragment;
+import com.orion.settings.fragment.PerAppListConfigFragment;
 
-public class PerAppRefreshRateFragment extends PerAppConfigFragment {
+public class PerAppRefreshRateFragment extends PerAppListConfigFragment {
 
     private DisplayRefreshRateHelper mHelper;
     private RefreshRateManager mRefreshRateManager;
