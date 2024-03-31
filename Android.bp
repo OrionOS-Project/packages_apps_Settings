@@ -197,6 +197,11 @@ filegroup {
     srcs: ["proguard.flags"],
 }
 
+filegroup {
+    name: "Settings_manifest",
+    srcs: ["AndroidManifest.xml"],
+}
+
 android_library_import {
     name: "expandable-bottombar",
     aars: ["libs/lib-expandablebottombar-release.aar"],
