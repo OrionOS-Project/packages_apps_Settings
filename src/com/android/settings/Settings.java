@@ -661,5 +661,6 @@ public class Settings extends SettingsActivity {
      * Molecular Activity
      */
     public static class MolecularSettingsActivity extends SettingsActivity {}
+    public static class PrivateDnsSettingsActivity extends SettingsActivity { /* empty */ }
 }
 >>>>>>> e575d445d53 (Settings: Integrate Molecular Customizations)
