@@ -518,4 +518,7 @@ public class Settings extends SettingsActivity {
 
     // Molecular Additions.
     public static class MolecularSettingsActivity extends SettingsActivity {}
+
+    // Private DNS Settings
+    public static class PrivateDnsSettingsActivity extends SettingsActivity { /* empty */ }
 }

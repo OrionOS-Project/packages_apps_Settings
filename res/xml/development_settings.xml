@@ -643,7 +643,7 @@
             android:summary="@string/usb_audio_disable_routing_summary" />
 
         <!-- Unlimit screenrecord -->
-        <org.evolution.settings.preferences.SystemSettingSwitchPreference
+        <com.orion.support.preferences.SystemSettingSwitchPreference
             android:key="unlimit_screenrecord"
             android:title="@string/unlimit_screenrecord_title"
             android:summary="@string/unlimit_screenrecord_summary"

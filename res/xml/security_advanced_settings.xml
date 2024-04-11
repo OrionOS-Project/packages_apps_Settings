@@ -123,14 +123,14 @@
         android:fragment="com.android.settings.security.HideDeveloperStatusSettings"
         settings:controller="com.android.settings.security.HideDeveloperStatusPreferenceController" />
 
-    <org.evolution.settings.preferences.GlobalSettingSwitchPreference
+    <com.orion.support.preferences.GlobalSettingSwitchPreference
         android:order="95"
         android:key="hide_screen_capture_status"
         android:title="@string/hide_screen_capture_status_title"
         android:summary="@string/hide_screen_capture_status_summary"
         android:defaultValue="false"/>
 
-    <org.evolution.settings.preferences.GlobalSettingSwitchPreference
+    <com.orion.support.preferences.GlobalSettingSwitchPreference
         android:order="96"
         android:key="no_storage_restrict"
         android:title="@string/no_storage_restrict_title"

@@ -44,7 +44,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-import com.android.internal.util.evolution.HideDeveloperStatusUtils
+import com.android.internal.util.orion.HideDeveloperStatusUtils
 
 import com.android.settings.R
 
