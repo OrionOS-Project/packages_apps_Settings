@@ -495,6 +495,18 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
         mMobileDataPreferenceController.displayPreference(getPreferenceScreen());
     }
 
+    private void addMobileDataPreferenceController() {
+        if (!showAnySubscriptionInfo(getContext())) {
+            return;
+        }
+        if (mMobileDataPreferenceController == null) {
+            mMobileDataPreferenceController = new MobileDataPreferenceController(
+                    getContext(), PREF_KEY_MOBILE_DATA_TOGGLE, getSettingsLifecycle(),
+                    mSubId, mIsInSetupWizard);
+        }
+        mMobileDataPreferenceController.displayPreference(getPreferenceScreen());
+    }
+
     private void addNetworkMobileProviderController() {
         if (!showAnySubscriptionInfo(getContext())) {
             return;
