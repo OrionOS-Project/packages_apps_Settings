@@ -142,7 +142,7 @@ open class WifiHotspotScreen(context: Context) :
 
     override fun isEnabled(context: Context) =
         wifiHotspotStore.dataSaverStore.getBoolean(DATA_SAVER_KEY) != true &&
-                super<PreferenceRestrictionMixin>.isEnabled(context)
+            super<PreferenceRestrictionMixin>.isEnabled(context)
 
     override val restrictionKeys
         get() = arrayOf(UserManager.DISALLOW_WIFI_TETHERING)
@@ -231,7 +231,16 @@ open class WifiHotspotScreen(context: Context) :
             Log.e(TAG, "onTetheringFailed(),error=$error")
         }
 
-        override fun onKeyChanged(key: String, reason: Int) = notifyChange(KEY, reason)
+        override fun onKeyChanged(key: String, reason: Int) =
+            notifyChange(KEY, DataChangeReason.UPDATE)
+    }
+
+    override fun bind(preference: Preference, metadata: PreferenceMetadata) {
+        super.bind(preference, metadata)
+        (preference as PrimarySwitchPreference).apply {
+            isChecked = preferenceDataStore!!.getBoolean(key, false)
+            isSwitchEnabled = isEnabled
+        }
     }
 
     companion object {
