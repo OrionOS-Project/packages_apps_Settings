@@ -75,7 +75,7 @@
             android:layout_gravity="start"
             android:textAlignment="viewStart"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/settingslib_text_color_secondary"
+            android:textColor="?androidprv:attr/materialColorOnSurfaceVariant"
             android:maxLines="4"
             style="@style/PreferenceSummaryTextStyle"/>
     </RelativeLayout>

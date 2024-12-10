@@ -30,6 +30,7 @@
     <color name="homepage_purple_bg">@color/m3_ref_palette_purple80</color>
 
     <color name="contextual_card_background">@*android:color/material_grey_900</color>
+    <color name="search_bar_background">?androidprv:attr/materialColorSurfaceBright</color>
     <color name="notification_importance_button_unselected">#5F6368</color>
 
     <!-- Palette list preference colors. -->
