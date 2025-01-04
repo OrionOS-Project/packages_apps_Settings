@@ -67,6 +67,7 @@ android_library {
         "res-export", // for external usage
         "res-product",
         "Molecular/res",
+        "SettingsGoogle/res",
     ],
 
     aaptflags: ["--extra-packages com.orion.support",
@@ -200,6 +201,11 @@ android_library_import {
 filegroup {
     name: "Settings_proguard_flags",
     srcs: ["proguard.flags"],
+}
+
+filegroup {
+    name: "Settings_manifest",
+    srcs: ["AndroidManifest.xml"],
 }
 
 android_library_import {
