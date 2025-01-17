@@ -27,6 +27,13 @@
         android:layout="@layout/settings_entity_header"
         android:selectable="false"/>
 
+    <!-- About Phone Header -->
+    <com.android.settingslib.widget.LayoutPreference
+        android:key="about_phone_header"
+        android:layout="@layout/about_phone_header_layout"
+        settings:controller="com.android.settings.deviceinfo.aboutphone.AboutPhoneHeaderController"
+        android:selectable="false"/>
+
     <PreferenceCategory
         android:key="basic_info_category"
         android:selectable="false"
@@ -52,16 +59,24 @@
             settings:enableCopying="true"
             settings:controller="com.android.settings.deviceinfo.BrandedAccountPreferenceController"/>
 
-        <!-- Phone number -->
-        <com.android.settings.deviceinfo.PhoneNumberSummaryPreference
-            android:key="phone_number"
+        <!-- Device Details -->
+        <Preference
+            android:key="device_details"
             android:order="3"
-            android:title="@string/status_number"
+            android:title="@string/my_device_info_device_details_category_title"
+            android:summary="@string/my_device_info_device_details_summary"
+            settings:layout="@layout/card_preference_middle_with_option"
+            android:fragment="com.android.settings.deviceinfo.aboutphone.DeviceDetailsFragment"/>    
+
+        <!-- Android version -->
+        <Preference
+            android:key="firmware_version"
+            android:order="4"
+            android:title="@string/firmware_version"
             android:summary="@string/summary_placeholder"
-            settings:isPreferenceVisible="@bool/config_show_sim_info"
-            settings:layout="@layout/card_preference_bottom"
-            settings:controller="com.android.settings.deviceinfo.PhoneNumberPreferenceController"
-            settings:enableCopying="true"/>
+            settings:layout="@layout/card_preference_bottom_with_option"
+            android:fragment="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionSettings"
+            settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionPreferenceController"/>
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -72,7 +87,7 @@
             android:key="legal_container"
             android:order="15"
             android:title="@string/legal_information"
-            settings:layout="@layout/card_preference_top"
+            settings:layout="@layout/card_preference_single"
             android:fragment="com.android.settings.LegalSettings"/>
 
         <!-- Regulatory labels -->
@@ -80,7 +95,7 @@
             android:key="regulatory_info"
             android:order="16"
             android:title="@string/regulatory_labels"
-            settings:layout="@layout/card_preference_middle_with_option">
+            settings:layout="@layout/card_preference_single_with_option">
             <intent android:action="android.settings.SHOW_REGULATORY_INFO"
                     android:targetPackage="${applicationId}"/>
         </Preference>
@@ -90,83 +105,9 @@
             android:key="safety_info"
             android:order="17"
             android:title="@string/safety_and_regulatory_info"
-            settings:layout="@layout/card_preference_bottom"/>
+            settings:layout="@layout/card_preference_single"/>
     </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="device_detail_category"
-        android:selectable="false"
-        android:title="@string/my_device_info_device_details_category_title">
-
-        <Preference
-            android:title="@string/radio_info_title"
-            android:key="radio_info_settings"
-            android:order="6"
-            settings:controller="com.android.settings.deviceinfo.RadioInfoPreferenceController">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.phone"
-                    android:targetClass="com.android.phone.settings.RadioInfo" />
-        </Preference>
-
-        <!-- SIM status -->
-        <Preference
-            android:key="sim_status"
-            android:order="18"
-            android:title="@string/sim_status_title"
-            settings:keywords="@string/keywords_sim_status"
-            android:summary="@string/summary_placeholder"
-            settings:layout="@layout/card_preference_top"
-            settings:isPreferenceVisible="@bool/config_show_sim_info"
-            settings:controller="com.android.settings.deviceinfo.simstatus.SimStatusPreferenceController"/>
-
-        <!-- Model & hardware -->
-        <Preference
-            android:key="device_model"
-            android:order="30"
-            android:title="@string/model_info"
-            android:summary="@string/summary_placeholder"
-            settings:layout="@layout/card_preference_middle_with_option"
-            android:fragment="com.android.settings.deviceinfo.hardwareinfo.HardwareInfoFragment"
-            settings:enableCopying="true"
-            settings:keywords="@string/keywords_model_and_hardware"
-            settings:controller="com.android.settings.deviceinfo.HardwareInfoPreferenceController"/>
-
-        <!-- EID -->
-        <com.android.settingslib.CustomDialogPreferenceCompat
-            android:key="eid_info"
-            android:order="31"
-            android:title="@string/status_eid"
-            android:summary="@string/device_info_protected_single_press"
-            settings:layout="@layout/card_preference_middle_with_option"
-            android:positiveButtonText="@string/dlg_ok"
-            android:dialogLayout="@layout/dialog_eid_status"
-            settings:isPreferenceVisible="@bool/config_show_sim_info"
-            settings:enableCopying="true"
-            settings:controller="com.android.settings.deviceinfo.simstatus.SimEidPreferenceController"/>
-
-        <!-- IMEI -->
-        <com.android.settings.deviceinfo.PhoneNumberSummaryPreference
-            android:key="imei_info"
-            android:order="32"
-            android:title="@string/status_imei"
-            android:summary="@string/summary_placeholder"
-            settings:layout="@layout/card_preference_middle_with_option"
-            settings:keywords="@string/keywords_imei_info"
-            settings:enableCopying="true"
-            settings:isPreferenceVisible="@bool/config_show_sim_info"
-            settings:controller="com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController"/>
-
-        <!-- Android version -->
-        <Preference
-            android:key="firmware_version"
-            android:order="42"
-            android:title="@string/firmware_version"
-            android:summary="@string/summary_placeholder"
-            settings:layout="@layout/card_preference_bottom_with_option"
-            android:fragment="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionSettings"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionPreferenceController"/>
-    </PreferenceCategory>
-
+    
     <PreferenceCategory
         android:title="@string/my_device_info_device_identifiers_category_title">
 
@@ -177,7 +118,6 @@
             android:title="@string/wifi_ip_address"
             android:summary="@string/summary_placeholder"
             settings:layout="@layout/card_preference_top"
-            android:selectable="false"
             settings:enableCopying="true"/>
 
         <!-- Wi-Fi MAC address -->
@@ -197,7 +137,6 @@
             android:title="@string/status_device_wifi_mac_address"
             android:summary="@string/summary_placeholder"
             settings:layout="@layout/card_preference_middle"
-            android:selectable="false"
             settings:enableCopying="true"/>
 
         <!-- Bluetooth address -->
@@ -207,7 +146,6 @@
             android:title="@string/status_bt_address"
             android:summary="@string/summary_placeholder"
             settings:layout="@layout/card_preference_middle"
-            android:selectable="false"
             settings:enableCopying="true"/>
 
         <!-- Device up time -->
@@ -225,7 +163,7 @@
             android:order="49"
             android:title="@string/status_sleep_time"
             android:summary="@string/summary_placeholder"
-            android:selectable="false"/>
+            settings:layout="@layout/card_preference_middle"/>
 
         <!-- Manual -->
         <Preference

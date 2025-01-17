@@ -41,11 +41,6 @@ import com.android.settings.deviceinfo.SafetyInfoPreferenceController;
 import com.android.settings.deviceinfo.SleeptimePreferenceController;
 import com.android.settings.deviceinfo.UptimePreferenceController;
 import com.android.settings.deviceinfo.WifiMacAddressPreferenceController;
-import com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController;
-import com.android.settings.deviceinfo.simstatus.EidStatus;
-import com.android.settings.deviceinfo.simstatus.SimEidPreferenceController;
-import com.android.settings.deviceinfo.simstatus.SimStatusPreferenceController;
-import com.android.settings.deviceinfo.simstatus.SlotSimStatus;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -55,34 +50,13 @@ import com.android.settingslib.widget.LayoutPreference;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.function.Consumer;
-
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-
-import com.android.internal.telephony.IccCardConstants;
-import com.android.internal.telephony.TelephonyIntents;
 
 @SearchIndexable
 public class MyDeviceInfoFragment extends DashboardFragment
         implements DeviceNamePreferenceController.DeviceNamePreferenceHost {
 
     private static final String LOG_TAG = "MyDeviceInfoFragment";
-    private static final String KEY_EID_INFO = "eid_info";
     private static final String KEY_MY_DEVICE_INFO_HEADER = "my_device_info_header";
-
-    private final BroadcastReceiver mSimStateReceiver = new BroadcastReceiver() {
-        public void onReceive(Context context, Intent intent) {
-            final String action = intent.getAction();
-            if (TelephonyIntents.ACTION_SIM_STATE_CHANGED.equals(action)) {
-                String state = intent.getStringExtra(IccCardConstants.INTENT_KEY_ICC_STATE);
-                Log.d(LOG_TAG, "Received ACTION_SIM_STATE_CHANGED: " + state);
-                updatePreferenceStates();
-            }
-        }
-    };
 
     private BuildNumberPreferenceController mBuildNumberPreferenceController;
 
@@ -114,23 +88,12 @@ public class MyDeviceInfoFragment extends DashboardFragment
     public void onPause() {
         super.onPause();
         Context context = getContext();
-        if (context != null) {
-            context.unregisterReceiver(mSimStateReceiver);
-        } else {
-            Log.i(LOG_TAG, "context already null, not unregistering SimStateReceiver");
-        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
         Context context = getContext();
-        if (context != null) {
-            context.registerReceiver(mSimStateReceiver,
-                    new IntentFilter(TelephonyIntents.ACTION_SIM_STATE_CHANGED));
-        } else {
-            Log.i(LOG_TAG, "context is null, not registering SimStateReceiver");
-        }
     }
 
     @Override
@@ -152,12 +115,6 @@ public class MyDeviceInfoFragment extends DashboardFragment
             Context context, MyDeviceInfoFragment fragment, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
 
-        final ExecutorService executor = (fragment == null) ? null :
-                Executors.newSingleThreadExecutor();
-        androidx.lifecycle.Lifecycle lifecycleObject = (fragment == null) ? null :
-                fragment.getLifecycle();
-        final SlotSimStatus slotSimStatus = new SlotSimStatus(context, executor, lifecycleObject);
-
         controllers.add(new IpAddressPreferenceController(context, lifecycle));
         controllers.add(new WifiMacAddressPreferenceController(context, lifecycle));
         controllers.add(new BluetoothAddressPreferenceController(context, lifecycle));
@@ -169,37 +126,6 @@ public class MyDeviceInfoFragment extends DashboardFragment
         controllers.add(new SleeptimePreferenceController(context, lifecycle));
         controllers.add(new UptimePreferenceController(context, lifecycle));
 
-        Consumer<String> imeiInfoList = imeiKey -> {
-            ImeiInfoPreferenceController imeiRecord =
-                    new ImeiInfoPreferenceController(context, imeiKey);
-            imeiRecord.init(fragment, slotSimStatus);
-            controllers.add(imeiRecord);
-        };
-
-        if (fragment != null) {
-            imeiInfoList.accept(ImeiInfoPreferenceController.DEFAULT_KEY);
-        }
-
-        for (int slotIndex = 0; slotIndex < slotSimStatus.size(); slotIndex ++) {
-            SimStatusPreferenceController slotRecord =
-                    new SimStatusPreferenceController(context,
-                    slotSimStatus.getPreferenceKey(slotIndex));
-            slotRecord.init(fragment, slotSimStatus);
-            controllers.add(slotRecord);
-
-            if (fragment != null) {
-                imeiInfoList.accept(ImeiInfoPreferenceController.DEFAULT_KEY + (1 + slotIndex));
-            }
-        }
-
-        EidStatus eidStatus = new EidStatus(slotSimStatus, context, executor);
-        SimEidPreferenceController simEid = new SimEidPreferenceController(context, KEY_EID_INFO);
-        simEid.init(slotSimStatus, eidStatus);
-        controllers.add(simEid);
-
-        if (executor != null) {
-            executor.shutdown();
-        }
         return controllers;
     }
 
