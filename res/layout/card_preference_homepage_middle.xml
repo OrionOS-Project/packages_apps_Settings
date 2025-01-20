@@ -3,7 +3,7 @@
      Copyright (C) 2006 The Android Open Source Project
      Copyright (C) 2022 The xdroidOSS, xyzprjkt
      Copyright (C) 2025 OrionOS
-     
+
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -25,11 +25,24 @@
     android:layout_marginHorizontal="16dp"
     android:background="@drawable/cardview_middle"
     android:clipToPadding="false">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
+        android:gravity="center"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical" >
+        <ImageView
+            android:id="@android:id/icon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="9"
         android:paddingTop="16dp"
         android:paddingBottom="16dp">
         <TextView
@@ -39,29 +52,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"/>
-        <TextView
-            android:textColor="?android:textColorSecondary"
-            android:layout_gravity="start"
-            android:id="@android:id/summary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="10"
-            android:layout_below="@android:id/title"
-            android:layout_alignLeft="@android:id/title"
-            android:textAlignment="viewStart"
-            android:layout_alignStart="@android:id/title"
-            style="@style/PreferenceSummaryTextStyle"/>
-    </RelativeLayout>
+    </LinearLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:gravity="center"
+        android:layout_marginEnd="16dp"
         android:orientation="vertical" >
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_settings_doubledot"
-            android:layout_marginEnd="10dp" />
+            android:src="@drawable/ic_settings_doubledot"/>
     </LinearLayout>
 </LinearLayout>

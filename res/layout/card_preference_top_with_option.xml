@@ -58,11 +58,10 @@
         android:gravity="center"
         android:orientation="vertical" >
         <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_settings_doubledot"
-            android:tint="?android:textColorSecondary"
             android:layout_marginEnd="10dp" />
     </LinearLayout>
 </LinearLayout>
