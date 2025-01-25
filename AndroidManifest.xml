@@ -5475,7 +5475,6 @@
             <meta-data android:name="com.android.settings.summary"
                        android:resource="@string/molecular_summary"/>
         </activity>
-    </application>
 
         <!-- Face enroll -->
         <activity android:theme="@style/SudThemeGlif.Light"
@@ -5521,4 +5520,5 @@
             android:launchMode="singleTask" />
 
         <!-- This is the longest AndroidManifest.xml ever. -->
+	</application>
 </manifest>
