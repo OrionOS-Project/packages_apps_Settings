@@ -58,6 +58,10 @@ import com.android.settingslib.core.instrumentation.Instrumentable;
 import com.android.settingslib.drawer.Tile;
 import com.android.settingslib.search.SearchIndexable;
 
+import com.orion.support.helpers.HomepagePreferenceCustom;
+import com.orion.support.helpers.HomepagePreferenceCustomLayoutHelper;
+import com.orion.support.helpers.HomepagePreferenceCustomLayoutHelper.HomepagePreferenceCustomLayout;
+
 @SearchIndexable(forTarget = MOBILE)
 public class TopLevelSettings extends DashboardFragment implements SplitLayoutListener,
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
@@ -89,7 +93,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 
     @Override
     protected int getPreferenceScreenResId() {
-        return Flags.homepageRevamp() ? R.xml.top_level_settings_v2 : R.xml.top_level_settings;
+        return Flags.homepageRevamp() ? R.xml.top_level_settings_v2 : R.xml.top_level_settings_orion;
     }
 
     @Override
@@ -234,6 +238,11 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     @Override
     public void onSplitLayoutChanged(boolean isRegularLayout) {
         iteratePreferences(preference -> {
+            if (!Flags.homepageRevamp()) {
+                if (preference instanceof HomepagePreferenceCustomLayout) {
+                    ((HomepagePreferenceCustomLayout) preference).getHelper().setIconVisible(isRegularLayout);
+                }
+            }    
             if (preference instanceof HomepagePreferenceLayout) {
                 ((HomepagePreferenceLayout) preference).getHelper().setIconVisible(isRegularLayout);
             }
@@ -285,13 +294,22 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 
             @Override
             public void doForEach(Preference preference) {
+                if (!Flags.homepageRevamp()) {
+                    if (preference instanceof HomepagePreferenceCustomLayout) {
+                        HomepagePreferenceCustomLayoutHelper helper = ((HomepagePreferenceCustomLayout) preference).getHelper();
+                        if (helper != null) {
+                            helper.setIconPaddingStart(mIconPaddingStart);
+                            helper.setTextPaddingStart(mTextPaddingStart);
+                        }
+                    }
+                }
                 if (preference instanceof HomepagePreferenceLayout) {
                     HomepagePreferenceLayoutHelper helper = ((HomepagePreferenceLayout) preference).getHelper();
                     if (helper != null) {
                         helper.setIconPaddingStart(mIconPaddingStart);
                         helper.setTextPaddingStart(mTextPaddingStart);
                     }
-                }
+                }    
             }
         });
     }
@@ -354,6 +372,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 
     @Override
     protected Preference createPreference(Tile tile) {
+        if (!Flags.homepageRevamp()) {
+            return new HomepagePreferenceCustom(getPrefContext());
+        }
         return new HomepagePreference(getPrefContext());
     }
 
@@ -398,7 +419,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             new BaseSearchIndexProvider(
                     Flags.homepageRevamp()
                             ? R.xml.top_level_settings_v2
-                            : R.xml.top_level_settings) {
+                            : R.xml.top_level_settings_orion) {
 
                 @Override
                 protected boolean isPageSearchEnabled(Context context) {
