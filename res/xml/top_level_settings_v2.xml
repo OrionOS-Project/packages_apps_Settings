@@ -21,6 +21,20 @@
     android:key="top_level_settings">
 
     <PreferenceCategory
+        android:order="-140"
+        android:layout="@layout/settingslib_preference_category_no_title">
+       
+   <com.android.settings.widget.HomepagePreference
+        android:fragment="com.orion.support.Molecular"
+        android:icon="@drawable/ic_settings_orion"
+        android:key="top_level_orion"
+        android:order="-50"
+        android:title="@string/molecular_title"
+        android:summary="@string/molecular_summary"
+        settings:controller="com.android.settings.TopLevelExtensionsEntryPreferenceController" />
+   </PreferenceCategory>
+
+    <PreferenceCategory
         android:order="-130"
         android:key="top_level_connectivity_category"
         android:layout="@layout/settingslib_preference_category_no_title">
@@ -228,6 +242,12 @@
     <PreferenceCategory
         android:order="-90"
         android:key="top_level_account_category"
+        android:layout="@layout/settingslib_preference_category_no_title">
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:order="-20"
+        android:key="top_level_category_undefined"
         android:layout="@layout/settingslib_preference_category_no_title">
     </PreferenceCategory>
 
