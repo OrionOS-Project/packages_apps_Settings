@@ -65,23 +65,25 @@ public class OrionVersionHeaderController extends BasePreferenceController imple
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
         mLayoutPreference = screen.findPreference(getPreferenceKey());
-        mOrionVersion = mLayoutPreference.findViewById(R.id.orion_version);
-        mMaintainerName = mLayoutPreference.findViewById(R.id.maintainer_name);
-        mOfficialVersion = mLayoutPreference.findViewById(R.id.official_version_logo);
-        mMaintainerSection = mLayoutPreference.findViewById(R.id.maintainer_section);
+        mOrionVersion = mLayoutPreference.findViewById(mContext.getResources().getIdentifier("id/orion_version", null, mContext.getPackageName()));;
+        mMaintainerName = mLayoutPreference.findViewById(mContext.getResources().getIdentifier("id/maintainer_name", null, mContext.getPackageName()));;
+        mOfficialVersion = mLayoutPreference.findViewById(mContext.getResources().getIdentifier("id/official_version_logo", null, mContext.getPackageName()));;
+        mMaintainerSection = mLayoutPreference.findViewById(mContext.getResources().getIdentifier("id/maintainer_section", null, mContext.getPackageName()));;
 
-        String mOrionBuildType = SystemProperties.get(KEY_ORION_BUILD_TYPE);
+        String orionVersion = SystemProperties.get(KEY_ORION_VERSION);
+        mOrionVersion.setText(orionVersion != null ? orionVersion : "Unknown");
+        
+        String maintainerName = SystemProperties.get(KEY_DEVICE_MAINTAINER_NAME);
+        mMaintainerName.setText(maintainerName != null ? maintainerName : "Unknown");
 
-        mOrionVersion.setText(SystemProperties.get(KEY_ORION_VERSION));
-        mMaintainerName.setText(SystemProperties.get(KEY_DEVICE_MAINTAINER_NAME));
-
-        mMaintainerSection.setOnClickListener(this);
-
-        if ("official".equalsIgnoreCase(mOrionBuildType)) {
+        String orionBuildType = SystemProperties.get(KEY_ORION_BUILD_TYPE);
+        if ("official".equalsIgnoreCase(orionBuildType)) {
             mOfficialVersion.setVisibility(View.VISIBLE);
         } else {
             mOfficialVersion.setVisibility(View.GONE);
         }
+
+        mMaintainerSection.setOnClickListener(this);
     }
 
     @Override

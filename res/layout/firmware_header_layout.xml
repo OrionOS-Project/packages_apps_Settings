@@ -64,7 +64,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Unknown"
                 android:textStyle="bold"
                 android:textSize="35sp"
                 android:textColor="?android:textColorPrimary"/>
@@ -107,7 +106,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="unknown"
                         android:textColor="?android:textColorPrimary"/>
                 </LinearLayout>        
             </androidx.cardview.widget.CardView>

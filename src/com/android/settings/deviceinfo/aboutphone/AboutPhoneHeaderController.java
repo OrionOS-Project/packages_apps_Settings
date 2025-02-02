@@ -63,14 +63,21 @@ public class AboutPhoneHeaderController extends BasePreferenceController {
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
         mLayoutPreference = screen.findPreference(getPreferenceKey());
-        mDeviceCodename = mLayoutPreference.findViewById(R.id.device_codename);
-        mDeviceBrand = mLayoutPreference.findViewById(R.id.device_brand);
-        mDeviceChipset = mLayoutPreference.findViewById(R.id.device_chipset);
-        mDeviceRam = mLayoutPreference.findViewById(R.id.device_ram);
+        mDeviceCodename = mLayoutPreference.findViewById(mContext.getResources().getIdentifier("id/device_codename", null, mContext.getPackageName()));;
+        mDeviceBrand = mLayoutPreference.findViewById(mContext.getResources().getIdentifier("id/device_brand", null, mContext.getPackageName()));;
+        mDeviceChipset = mLayoutPreference.findViewById(mContext.getResources().getIdentifier("id/device_chipset", null, mContext.getPackageName()));;
+        mDeviceRam = mLayoutPreference.findViewById(mContext.getResources().getIdentifier("id/device_ram", null, mContext.getPackageName()));;
 
-        mDeviceCodename.setText(SystemProperties.get(KEY_DEVICE_CODENAME));
-        mDeviceBrand.setText(SystemProperties.get(KEY_DEVICE_BRAND));
-        mDeviceChipset.setText(SystemProperties.get(KEY_DEVICE_CHIPSET));
-        mDeviceRam.setText(DeviceUtils.getMemoryInfo());
+        String deviceCodename = SystemProperties.get(KEY_DEVICE_CODENAME);
+        mDeviceCodename.setText(deviceCodename != null ? deviceCodename : "Unknown");
+
+        String deviceBrand = SystemProperties.get(KEY_DEVICE_BRAND);
+        mDeviceBrand.setText(deviceBrand != null ? deviceBrand : "Unknown");
+
+        String deviceChipset = SystemProperties.get(KEY_DEVICE_CHIPSET);
+        mDeviceChipset.setText(deviceChipset != null ? deviceChipset : "Unknown");
+
+        String deviceRam = DeviceUtils.getMemoryInfo();
+        mDeviceRam.setText(deviceRam != null ? deviceRam : "Unknown");
     }
 }
