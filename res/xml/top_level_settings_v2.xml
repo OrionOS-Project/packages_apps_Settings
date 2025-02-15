@@ -32,7 +32,7 @@
             android:title="@string/molecular_title"
             android:summary="@string/molecular_summary"
             settings:controller="com.android.settings.TopLevelExtensionsEntryPreferenceController" />
-   </PreferenceCategory>
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:order="-130"
@@ -242,12 +242,6 @@
     <PreferenceCategory
         android:order="-90"
         android:key="top_level_account_category"
-        android:layout="@layout/settingslib_preference_category_no_title">
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:order="-20"
-        android:key="top_level_category_undefined"
         android:layout="@layout/settingslib_preference_category_no_title">
     </PreferenceCategory>
 
