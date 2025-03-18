@@ -36,7 +36,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.hardware.face.FaceManager;
 import android.hardware.fingerprint.Fingerprint;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.UserHandle;
@@ -55,7 +54,6 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.android.internal.widget.LockPatternUtils;
-import com.android.settings.biometrics.BiometricEnrollActivity;
 import com.android.settings.biometrics.fingerprint.FingerprintSettings;
 import com.android.settings.flags.Flags;
 import com.android.settings.testutils.FakeFeatureFactory;
@@ -260,12 +258,10 @@ public class FingerprintSafetySourceTest {
 
     @Test
     @RequiresFlagsEnabled(Flags.FLAG_BIOMETRICS_ONBOARDING_EDUCATION)
-    public void setSafetySourceData_onlyFingerprintNotEnrolled_whenNotDisabledByAdmin_setsData() {
+    public void setSafetySourceData_withFingerprintNotEnrolled_whenNotDisabledByAdmin_setsData() {
         when(mSafetyCenterManagerWrapper.isEnabled(mApplicationContext)).thenReturn(true);
         when(mFingerprintManager.isHardwareDetected()).thenReturn(true);
         when(mFingerprintManager.hasEnrolledFingerprints(anyInt())).thenReturn(false);
-        when(mFaceManager.isHardwareDetected()).thenReturn(true);
-        when(mFaceManager.hasEnrolledTemplates(anyInt())).thenReturn(true);
         when(mDevicePolicyManager.getKeyguardDisabledFeatures(COMPONENT_NAME)).thenReturn(0);
 
         FingerprintSafetySource.setSafetySourceData(mApplicationContext,

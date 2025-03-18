@@ -37,7 +37,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.face.FaceManager;
-import android.hardware.fingerprint.FingerprintManager;
 import android.os.UserHandle;
 import android.platform.test.annotations.DisableFlags;
 import android.platform.test.annotations.EnableFlags;
@@ -267,12 +266,10 @@ public class FaceSafetySourceTest {
 
     @Test
     @RequiresFlagsEnabled(Flags.FLAG_BIOMETRICS_ONBOARDING_EDUCATION)
-    public void setSafetySourceData_onlyFaceNotEnrolled_whenNotDisabledByAdmin_setsData() {
+    public void setSafetySourceData_withFaceNotEnrolled_whenNotDisabledByAdmin_setsData() {
         when(mSafetyCenterManagerWrapper.isEnabled(mApplicationContext)).thenReturn(true);
         when(mFaceManager.isHardwareDetected()).thenReturn(true);
         when(mFaceManager.hasEnrolledTemplates(anyInt())).thenReturn(false);
-        when(mFingerprintManager.isHardwareDetected()).thenReturn(true);
-        when(mFingerprintManager.hasEnrolledFingerprints(anyInt())).thenReturn(true);
         when(mDevicePolicyManager.getKeyguardDisabledFeatures(COMPONENT_NAME)).thenReturn(0);
 
         FaceSafetySource.setSafetySourceData(mApplicationContext, EVENT_SOURCE_STATE_CHANGED);

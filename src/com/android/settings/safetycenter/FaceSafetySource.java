@@ -16,7 +16,6 @@
 
 package com.android.settings.safetycenter;
 
-import static com.android.settings.biometrics.BiometricEnrollActivity.EXTRA_LAUNCH_FACE_ENROLL_FIRST;
 import static com.android.settings.safetycenter.BiometricSourcesUtils.REQUEST_CODE_FACE_SETTING;
 
 import android.app.admin.EnforcingAdmin;
@@ -30,7 +29,6 @@ import android.os.UserManager;
 import android.safetycenter.SafetyEvent;
 
 import com.android.settings.Utils;
-import com.android.settings.biometrics.BiometricEnrollActivity;
 import com.android.settings.biometrics.BiometricNavigationUtils;
 import com.android.settings.biometrics.face.FaceStatusUtils;
 import com.android.settings.flags.Flags;
