@@ -422,6 +422,24 @@ public class BluetoothPairingDialogTest {
 
     @Ignore
     @Test
+    public void confirmationDialog_showConfirmationMessage() {
+        when(controller.getDialogType()).thenReturn(BluetoothPairingController.CONFIRMATION_DIALOG);
+        when(controller.getDeviceName()).thenReturn("Device");
+        when(controller.hasPairingContent()).thenReturn(true);
+        when(controller.getPairingContent()).thenReturn(FILLER);
+
+        // build the fragment
+        BluetoothPairingDialogFragment frag = makeFragment();
+
+        TextView pairingConfirmationHint =
+                frag.getmDialog().findViewById(R.id.pairing_confirmation_hint);
+        assertThat(pairingConfirmationHint.getText())
+                .isEqualTo(frag.getString(R.string.bluetooth_pairing_confirmation_msg, "Device"));
+        assertThat(pairingConfirmationHint.getVisibility()).isEqualTo(View.VISIBLE);
+    }
+
+    @Ignore
+    @Test
     public void rotateDialog_nullPinText_okButtonEnabled() {
         userEntryDialogExistingTextTest(null);
     }
