@@ -12,6 +12,7 @@
     <!-- About phone screen, OrionOS version -->
     <string name="orion_version">Orion version</string>
     <string name="orion_version_default">Unknown</string>
+    <string name="menu_key_orion">top_level_orion_molecular</string>
 
     <!-- OrionOS Maintainer -->
     <string name="orion_maintainer">Maintainer</string>
@@ -20,4 +21,13 @@
     <string name="app_volume">App volume</string>
     <string name="app_volume_title">Per-app volume control</string>
     <string name="app_volume_summary">Show per-app volume button into volume dialog</string>
+
+    <!-- Dashboard categories -->
+    <string name="top_level_connectivity">Connectivity</string>
+    <string name="top_level_personalize">Personalize</string>
+    <string name="top_level_security" translatable="false">@string/security_settings_title</string>
+    <string name="top_level_system">System</string>
+    <string name="top_level_info">Information</string>
+    <string name="wellbeing_title">Digital Wellbeing &amp; parental controls</string>
+    <string name="wellbeing_summary">Screen time, app timers, bedtime schedules</string>
 </resources>
