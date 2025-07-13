@@ -402,7 +402,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     private static int getPreferenceLayoutResId(Context context) {
         return Flags.homepageRevamp()
                 ? SettingsThemeHelper.isExpressiveTheme(context)
-                        ? R.xml.top_level_settings_expressive
+                        ? R.xml.orion_top_level_settings
                         : R.xml.top_level_settings_v2
                 : R.xml.top_level_settings;
     }
