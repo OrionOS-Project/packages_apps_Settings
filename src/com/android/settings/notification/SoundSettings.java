@@ -128,7 +128,7 @@ public class SoundSettings extends DashboardFragment implements OnActivityResult
 
     private void updateAmbientMusicPref() {
         final PreferenceScreen screen = getPreferenceScreen();
-        if (Build.MANUFACTURER.equals("Google") || screen == null) {
+        if (getContext().getResources().getBoolean(R.bool.config_show_now_playing) || screen == null) {
             return;
         }
 
@@ -329,7 +329,7 @@ public class SoundSettings extends DashboardFragment implements OnActivityResult
                 public List<String> getNonIndexableKeys(Context context) {
                     List<String> keys = super.getNonIndexableKeys(context);
 
-                    if (!Build.MANUFACTURER.equals("Google")) {
+                    if (!context.getResources().getBoolean(R.bool.config_show_now_playing)) {
                         keys.add(KEY_NOW_PLAYING);
                     }
 
