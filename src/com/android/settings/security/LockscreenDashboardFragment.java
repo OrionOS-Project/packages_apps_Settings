@@ -107,7 +107,6 @@ public class LockscreenDashboardFragment extends DashboardFragment
                 R.string.locked_work_profile_notification_title);
         replaceEnterpriseStringTitle("security_setting_lock_screen_notif_work_header",
                 WORK_PROFILE_NOTIFICATIONS_SECTION_HEADER, R.string.profile_section_header);
-
         Resources systemUiResources;
         try {
             systemUiResources = getPackageManager().getResourcesForApplication("com.android.systemui");
@@ -129,7 +128,7 @@ public class LockscreenDashboardFragment extends DashboardFragment
 
     private void updateAmbientMusicPref() {
         final PreferenceScreen screen = getPreferenceScreen();
-        if (Build.MANUFACTURER.equals("Google") || screen == null) {
+        if (getContext().getResources().getBoolean(R.bool.config_show_now_playing) || screen == null) {
             return;
         }
         final Preference preference = screen.findPreference(KEY_NOW_PLAYING);
@@ -255,7 +254,7 @@ public class LockscreenDashboardFragment extends DashboardFragment
                 public List<String> getNonIndexableKeys(Context context) {
                     final List<String> niks = super.getNonIndexableKeys(context);
                     niks.add(KEY_ADD_USER_FROM_LOCK_SCREEN);
-                    if (!Build.MANUFACTURER.equals("Google")) {
+                    if (!context.getResources().getBoolean(R.bool.config_show_now_playing)) {
                         niks.add(KEY_NOW_PLAYING);
                     }
                     return niks;
