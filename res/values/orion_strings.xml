@@ -13,6 +13,9 @@
     <string name="orion_version">Orion version</string>
     <string name="orion_version_default">Unknown</string>
 
+    <!-- OrionOS Maintainer -->
+    <string name="orion_maintainer">Maintainer</string>
+
      <!-- Per-app volume -->
     <string name="app_volume">App volume</string>
     <string name="app_volume_title">Per-app volume control</string>
