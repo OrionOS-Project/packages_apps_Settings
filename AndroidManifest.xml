@@ -5734,7 +5734,7 @@
                 <action android:name="com.android.settings.action.SETTINGS"/>
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                       android:value="com.orion.support.Molecular"/>
+                       android:value="com.orion.support.MolecularComposeActivity"/>
             <meta-data android:name="com.android.settings.summary"
                        android:resource="@string/molecular_summary"/>
         </activity>
