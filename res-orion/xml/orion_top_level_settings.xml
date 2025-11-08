@@ -32,7 +32,7 @@
         android:key="top_level_orion_category"
         android:layout="@layout/settingslib_preference_category_no_title">
         <com.android.settings.widget.HomepagePreference
-            android:fragment="com.orion.support.Molecular"
+	    android:fragment="com.orion.support.MolecularComposeFragment"
             android:icon="@drawable/ic_homepage_orion"
             android:key="top_level_orion"
             android:order="-160"
