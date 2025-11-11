@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+	
+	<path
+		android:fillColor="?android:attr/colorControlNormal"
+		android:strokeLineJoin="miter"
+		android:fillType="nonZero"
+		android:strokeLineCap="square"
+		android:pathData="M4.00,8.60C5.88,8.60,7.40,10.12,7.40,12.00C7.40,13.88,5.88,15.40,4.00,15.40C2.12,15.40,0.60,13.88,0.60,12.00C0.60,10.12,2.12,8.60,4.00,8.60z"/>
+	<path
+		android:fillColor="?android:attr/colorControlNormal"
+		android:strokeLineJoin="miter"
+		android:fillType="nonZero"
+		android:strokeLineCap="square"
+		android:pathData="M12.00,8.60C13.88,8.60,15.40,10.12,15.40,12.00C15.40,13.88,13.88,15.40,12.00,15.40C10.12,15.40,8.60,13.88,8.60,12.00C8.60,10.12,10.12,8.60,12.00,8.60z"/>
+	<path
+		android:fillColor="?android:attr/colorControlNormal"
+		android:strokeLineJoin="miter"
+		android:fillType="nonZero"
+		android:strokeLineCap="square"
+		android:pathData="M20.00,8.60C21.88,8.60,23.40,10.12,23.40,12.00C23.40,13.88,21.88,15.40,20.00,15.40C18.12,15.40,16.60,13.88,16.60,12.00C16.60,10.12,18.12,8.60,20.00,8.60z"/>
+</vector>
