@@ -217,7 +217,7 @@ import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.wifi.savedaccesspoints2.SavedAccessPointsWifiSettings2;
 import com.android.settings.wifi.tether.WifiTetherSettings;
 
-import com.orion.support.Molecular;
+import com.orion.support.MolecularComposeFragment;
 
 public class SettingsGateway {
 
@@ -424,7 +424,7 @@ public class SettingsGateway {
             ContentProtectionPreferenceFragment.class.getName(),
             ToggleScreenMagnificationPreferenceFragment.class.getName(),
             FlashNotificationsPreferenceFragment.class.getName(),
-            Molecular.class.getName(),
+            MolecularComposeFragment.class.getName(),
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
