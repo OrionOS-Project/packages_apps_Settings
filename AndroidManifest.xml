@@ -6208,5 +6208,102 @@
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
+
+        <!-- StatusBar -->
+         <activity-alias
+             android:name="Settings$MolecularStatusbarActivity"
+             android:targetActivity="com.android.settings.SubSettings"
+             android:label="@string/statusbar_title"
+             android:icon="@drawable/molecular_statusbar"
+             android:exported="true">
+             <meta-data
+                 android:name="com.android.settings.FRAGMENT_CLASS"
+                 android:value="com.orion.support.fragment.StatusBar" />
+         </activity-alias>
+
+        <!-- QuickSettings -->
+         <activity-alias
+             android:name="Settings$MolecularQuickSettingsActivity"
+             android:targetActivity="com.android.settings.SubSettings"
+             android:label="@string/qs_title"
+             android:icon="@drawable/molecular_quicksettings"
+             android:exported="true">
+             <meta-data
+                 android:name="com.android.settings.FRAGMENT_CLASS"
+                 android:value="com.orion.support.fragment.QS" />
+         </activity-alias>
+
+        <!-- Monet Settings -->
+         <activity-alias
+             android:name="Settings$MolecularMonetActivity"
+             android:targetActivity="com.android.settings.SubSettings"
+             android:label="@string/monet_settings_title"
+             android:icon="@drawable/molecular_monet"
+             android:exported="true">
+             <meta-data
+                 android:name="com.android.settings.FRAGMENT_CLASS"
+                 android:value="com.orion.support.fragment.MonetSettings" />
+         </activity-alias>
+
+        <!-- Button -->
+         <activity-alias
+             android:name="Settings$MolecularButtonActivity"
+             android:targetActivity="com.android.settings.SubSettings"
+             android:label="@string/buttons_title"
+             android:icon="@drawable/molecular_button"
+             android:exported="true">
+             <meta-data
+                 android:name="com.android.settings.FRAGMENT_CLASS"
+                 android:value="com.orion.support.fragment.Buttons" />
+         </activity-alias>
+
+        <!-- Lockscreen -->
+         <activity-alias
+             android:name="Settings$MolecularLockScreenActivity"
+             android:targetActivity="com.android.settings.SubSettings"
+             android:label="@string/lockscreen_title"
+             android:icon="@drawable/molecular_lock"
+             android:exported="true">
+             <meta-data
+                 android:name="com.android.settings.FRAGMENT_CLASS"
+                 android:value="com.orion.support.fragment.Lockscreen" />
+         </activity-alias>
+
+        <!-- Misc -->
+         <activity-alias
+             android:name="Settings$MolecularMiscActivity"
+             android:targetActivity="com.android.settings.SubSettings"
+             android:label="@string/misc_title"
+             android:icon="@drawable/molecular_misc"
+             android:exported="true">
+             <meta-data
+                 android:name="com.android.settings.FRAGMENT_CLASS"
+                 android:value="com.orion.support.fragment.Misc" />
+         </activity-alias>
+        
+        <!-- Spoofing -->
+        <activity-alias
+             android:name="Settings$MolecularSpoofActivity"
+             android:targetActivity="com.android.settings.SubSettings"
+             android:label="@string/spoofing_title"
+             android:icon="@drawable/molecular_spoof"
+             android:exported="true">
+             <meta-data
+                 android:name="com.android.settings.FRAGMENT_CLASS"
+                 android:value="com.orion.support.fragment.Spoofing" />
+         </activity-alias>
+
+         <!-- About -->
+         <activity-alias
+             android:name="Settings$MolecularAboutActivity"
+             android:targetActivity="com.android.settings.SubSettings"
+             android:label="@string/about_title"
+             android:icon="@drawable/molecular_about"
+             android:exported="true">
+             <meta-data
+                 android:name="com.android.settings.FRAGMENT_CLASS"
+                 android:value="com.orion.support.fragment.About" />
+         </activity-alias>
+
     </application>
 </manifest>

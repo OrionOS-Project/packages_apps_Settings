@@ -660,7 +660,17 @@ public class Settings extends SettingsActivity {
     /**
      * Molecular Activity
      */
-    public static class MolecularSettingsActivity extends SettingsActivity {}
+    public static class MolecularSettingsActivity extends SubSettings {}
+    public static class MolecularActivity extends SubSettings {}
+    public static class MolecularStatusbarActivity extends SubSettings {}
+    public static class MolecularQuickSettingsActivity extends SubSettings {}
+    public static class MolecularMonetActivity extends SubSettings {}
+    public static class MolecularButtonActivity extends SubSettings {}
+    public static class MolecularLockScreenActivity extends SubSettings {}
+    public static class MolecularMiscActivity extends SubSettings {}
+    public static class MolecularSpoofActivity extends SubSettings {}
+    public static class MolecularAboutActivity extends SubSettings {}
+
     public static class PrivateDnsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class ScreenRefreshRateActivity extends SettingsActivity {}
     public static class DevRunningServicesActivity extends SettingsActivity { /* empty */ }
