@@ -14,7 +14,7 @@ public class OrionVersionPreferenceController extends BasePreferenceController {
     @VisibleForTesting
     static final String ORION_VERSION_PROPERTY = "ro.modversion";
     private static final String ORION_BASE_VERSION_PROPERTY = "ro.orion.version";
-    private static final String ORION_RELEASE_TYPE_PROPERTY = "ro.orion.build.type";
+    private static final String ORION_STATUS_TYPE_PROPERTY = "ro.orion.build.status";
 
     public OrionVersionPreferenceController(Context context, String preferenceKey) {
         super(context, preferenceKey);
@@ -30,9 +30,9 @@ public class OrionVersionPreferenceController extends BasePreferenceController {
     public CharSequence getSummary() {
         String baseVersion = SystemProperties.get(ORION_BASE_VERSION_PROPERTY, "");
         String modVersion = SystemProperties.get(ORION_VERSION_PROPERTY, "");
-        String releaseType = SystemProperties.get(ORION_RELEASE_TYPE_PROPERTY, "");
+        String statusType = SystemProperties.get(ORION_STATUS_TYPE_PROPERTY, "");
 
-        if (TextUtils.isEmpty(baseVersion) && TextUtils.isEmpty(modVersion) && TextUtils.isEmpty(releaseType)) {
+        if (TextUtils.isEmpty(baseVersion) && TextUtils.isEmpty(modVersion) && TextUtils.isEmpty(statusType)) {
             return mContext.getString(R.string.device_info_default);
         }
 
@@ -47,9 +47,9 @@ public class OrionVersionPreferenceController extends BasePreferenceController {
             summary.append(modVersion);
         }
 
-        if (!TextUtils.isEmpty(releaseType)) {
+        if (!TextUtils.isEmpty(statusType)) {
             if (summary.length() > 0) summary.append(" | ");
-            summary.append(releaseType.toUpperCase());
+            summary.append(statusType.toUpperCase());
         }
 
         return summary.toString();
