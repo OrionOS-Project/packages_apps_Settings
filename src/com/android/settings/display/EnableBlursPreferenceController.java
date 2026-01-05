@@ -1,4 +1,4 @@
- /*
+/*
  * Copyright 2020 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -85,7 +85,11 @@ public final class EnableBlursPreferenceController extends TogglePreferenceContr
 
     @Override
     public int getAvailabilityStatus() {
-        return CROSS_WINDOW_BLUR_SUPPORTED ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
+        boolean systemSupportsBlur = android.os.SystemProperties.getBoolean(
+            "ro.surface_flinger.supports_background_blur", false);
+
+        return (CROSS_WINDOW_BLUR_SUPPORTED && systemSupportsBlur) 
+            ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
 
     @Override
@@ -112,5 +116,4 @@ public final class EnableBlursPreferenceController extends TogglePreferenceContr
     public int getSliceHighlightMenuRes() {
         return R.string.menu_key_display;
     }
-
 }
