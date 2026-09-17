@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Monet color pallete -->
+    <color name="orion_card_dynamic">@color/material_dynamic_neutral20</color>
+    <color name="orion_text_dynamic">@color/material_dynamic_neutral60</color>
+    <color name="orion_text_secondary_dynamic">@color/material_dynamic_neutral80</color>
+    <color name="orion_icon_dynamic">@color/orion_text_secondary_dynamic</color>
+</resources>

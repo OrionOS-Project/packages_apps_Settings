@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="banner_title_format">ORION OS %1$s</string>
+    <string name="keywords_top_level_device_info">about phone, orion, device name</string>
+    <string name="orion_build_status_title">Build status</string>
+    <string name="orion_cpu_title">Processor</string>
+    <string name="orion_device_title">Device</string>
+    <string name="orion_memory_storage_title">Memory</string>
+    <string name="orion_battery_size_title">Battery Capacity</string>
+    <string name="orion_screen_res_title">Screen Resolution</string>
+    <string name="orion_secpatch_title">Security Patch</string>
+
+    <string name="orion_memory_storage_summary">%1$sGB ROM + %2$dGB RAM</string>
+    <string name="orion_battery_summary">%1$d mAh</string>
+
+    <!-- Maintainer -->
+    <string name="orion_maintainer">Maintainer</string>
+    <string name="maintainer_info_default">Asterisxx</string>
+
+    <!-- SELinux Status -->
+    <string name="orion_selinux_title">SELinux status</string>
+    <string name="selinux_status_permissive">Permissive</string>
+    <string name="selinux_status_enforcing">Enforcing</string>
+</resources>

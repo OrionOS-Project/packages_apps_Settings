@@ -64,6 +64,7 @@ android_library {
     resource_dirs: [
         "res",
         "res-export", // for external usage
+        "res-orion", // OrionOS Resouces
         "res-product",
     ],
     optional_uses_libs: ["com.android.extensions.appfunctions"],
