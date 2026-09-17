@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginHorizontal="@dimen/orion_card_side_margin"
+    android:layout_marginTop="@dimen/orion_vertical_padding"
+    android:layout_marginBottom="@dimen/orion_vertical_padding"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="@dimen/orion_cool_branding_half_height"
+    android:paddingVertical="@dimen/orion_cool_branding_half_height"
+    android:background="@drawable/about_header_background_ripple">
+
+    <ImageView
+        android:id="@+id/banner_logo"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/ic_banner_logo"
+        android:layout_marginEnd="12dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/banner_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/orion_banner_dynamic"
+            android:fontFamily="sans-serif-condensed"
+            tools:text="Orion OS"/>
+
+        <TextView
+            android:id="@+id/banner_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:textColor="@color/orion_banner_dynamic"
+            android:alpha="0.7"
+            tools:text="Chlorine"/>
+
+    </LinearLayout>
+
+</LinearLayout>

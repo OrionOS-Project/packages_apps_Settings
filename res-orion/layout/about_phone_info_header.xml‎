@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/orion_cardview_padding"
+        android:layout_marginTop="@dimen/orion_cardview_padding"
+        android:background="@drawable/card_single_background_ripple">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/orion_card_side_margin"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="@dimen/orion_card_side_margin"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/orion_about_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="􀄙" />
+
+                    <TextView
+                        android:id="@+id/device_title"
+                        style="@style/orion_about_cardview_text_primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/orion_device_title" />
+
+                    <TextView
+                        android:id="@+id/device_summary"
+                        style="@style/orion_about_cardview_text_secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/orion_minus_summary"
+                        android:text="Redmi Note 9 Pro" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/orion_about_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="􀍾" />
+
+                    <TextView
+                        android:id="@+id/memory_storage_title"
+                        style="@style/orion_about_cardview_text_primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/orion_memory_storage_title" />
+
+                    <TextView
+                        android:id="@+id/memory_storage_summary"
+                        style="@style/orion_about_cardview_text_secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/orion_minus_summary"
+                        android:text="100 GB" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/orion_card_side_margin"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="@dimen/orion_card_side_margin"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/orion_about_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="􀛨" />
+
+                    <TextView
+                        android:id="@+id/battery_size_title"
+                        style="@style/orion_about_cardview_text_primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/orion_battery_size_title" />
+
+                    <TextView
+                        android:id="@+id/battery_size_summary"
+                        style="@style/orion_about_cardview_text_secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/orion_minus_summary"
+                        android:text="7000 mAh" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/orion_about_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="􀏞" />
+
+                    <TextView
+                        android:id="@+id/screen_res_title"
+                        style="@style/orion_about_cardview_text_primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/orion_screen_res_title" />
+
+                    <TextView
+                        android:id="@+id/screen_res_summary"
+                        style="@style/orion_about_cardview_text_secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/orion_minus_summary"
+                        android:text="1080 x 2400" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/orion_card_side_margin"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="@dimen/orion_card_side_margin"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp">
+
+                    <TextView
+                        style="@style/orion_about_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/cpu_title"
+                        style="@style/orion_about_cardview_text_primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/orion_cpu_title" />
+
+                    <TextView
+                        android:id="@+id/cpu_summary"
+                        style="@style/orion_about_cardview_text_secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/orion_minus_summary"
+                        android:text="Snapdragon 720G" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp">
+
+                    <TextView
+                        style="@style/orion_about_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/build_status_title"
+                        style="@style/orion_about_cardview_text_primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/orion_build_status_title" />
+
+                    <TextView
+                        android:id="@+id/build_status_summary"
+                        style="@style/orion_about_cardview_text_secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/orion_minus_summary"
+                        android:text="Official" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

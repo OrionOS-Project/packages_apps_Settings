@@ -14,8 +14,24 @@
     <string name="orion_version_default">Unknown</string>
     <string name="menu_key_orion">top_level_orion_molecular</string>
 
-    <!-- OrionOS Maintainer -->
+    <string name="banner_title_format">KOMODO OS %1$s</string>
+    <string name="keywords_top_level_device_info">about phone, orion, device name</string>
+    <string name="orion_build_status_title">Build status</string>
+    <string name="orion_cpu_title">Processor</string>
+    <string name="orion_device_title">Device</string>
+    <string name="orion_memory_storage_title">Memory</string>
+    <string name="orion_battery_size_title">Battery Capacity</string>
+    <string name="orion_screen_res_title">Screen Resolution</string>
+    <string name="orion_secpatch_title">Security Patch</string>
     <string name="orion_maintainer">Maintainer</string>
+
+    <!--  Default value  -->
+    <string name="maintainer_info_default">Asterisxx</string>
+
+    <!-- SELinux Status -->
+    <string name="orion_selinux_title">SELinux status</string>
+    <string name="selinux_status_permissive">Permissive</string>
+    <string name="selinux_status_enforcing">Enforcing</string>
 
      <!-- Per-app volume -->
     <string name="app_volume">App volume</string>
